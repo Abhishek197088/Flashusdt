@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-black: #08080c;
+  --color-cyber-dark: #111116;
+  --color-cyber-card: #15161e;
+  --color-cyber-border: #1f222e;
+  --color-neon-green: #22c55e;
+  --color-neon-bright: #10b981;
+  --color-cyber-cyan: #06b6d4;
+  
+  --animate-scanline: scanline 8s linear infinite;
+  --animate-pulse-slow: pulse-slow 6s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 3s infinite alternate;
+  --animate-float: float 6s ease-in-out infinite;
+  
+  @keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(1.15); }
+  }
+  @keyframes glow-pulse {
+    0% { filter: drop-shadow(0 0 5px rgba(34, 197, 94, 0.4)); }
+    100% { filter: drop-shadow(0 0 20px rgba(34, 197, 94, 0.8)); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+  }
+}
+
+/* Custom Cyberpunk Grids and Layouts */
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #08080c;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Custom neon scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #08080c;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f222e;
+  border-radius: 4px;
+  border: 1px solid rgba(34, 197, 94, 0.1);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.4);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+/* Cyberpunk grid overlay */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(34, 197, 94, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 197, 94, 0.04) 1px, transparent 1px);
+}
+
+.cyber-grid-radial {
+  background: radial-gradient(circle at 50% 50%, rgba(8, 8, 12, 0.2) 0%, #08080c 80%);
+}
+
+/* Glassmorphism card styles */
+.glass-panel {
+  background: rgba(21, 22, 30, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-neon {
+  background: rgba(21, 22, 30, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+}
+
+.glass-panel-cyan {
+  background: rgba(21, 22, 30, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+}
+
+/* Neon text highlights */
+.neon-text-green {
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.2);
+}
+
+.neon-text-cyan {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+/* Scanline scan bars */
+.scanline::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Cyber Terminal Font styles */
+.terminal-font {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
